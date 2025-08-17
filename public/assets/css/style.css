@@ -1,29 +1,49 @@
 .debug * {
 	outline: 2px solid red;
 }
+
+/* ===== MAIN LAYOUT ===== */
 .main {
+	display: flex;
+	flex-direction: column; /* default: atas–bawah (mobile first) */
+	align-items: center;
 	background-color: #ccc;
+	gap: 20px;
 }
+
+/* ===== PANEL INFO (Setting, Chat, dll) ===== */
 .main .info {
-	position: absolute;
-	top: 0;
-	left: 0;
+	position: relative;
+	width: 100%;
+	max-width: 800px;
+	background: #f0f0f0;
 	padding: 1rem;
+	border-radius: 8px;
+	box-sizing: border-box;
+	order: 2; /* biar default di bawah printer */
 }
+
+/* ===== CONTAINER PRINTER ===== */
 .main .container {
 	background-color: #fff;
-	width: 360px;
+	width: 100%;
+	max-width: 800px;
 	height: 100vh;
 	margin: auto;
+	order: 1; /* default di atas panel */
 }
+
+/* ===== BACKGROUND VIDEO ===== */
 .background {
-	position:fixed;
-	top:0;
-	bottom:0;
+	position: fixed;
+	top: 0;
+	bottom: 0;
 	object-fit: cover;
-	display:absolute;
+	display: absolute;
 	z-index: 1;
 }
+
+/* ===== PRINTER STYLE ===== */
 .printer {
 	background-image: url('../media/printer.png');
 	background-repeat: no-repeat;
@@ -53,7 +73,11 @@
 	border-top: 2px dashed black;
 	overflow-wrap: break-word !important;
 	word-break: break-all !important;
+	font-size: 1.1rem;
+	padding: 1rem .5rem;
 }
+
+/* ===== BOTTOM AREA ===== */
 .bottom-container {
 	height: 32%;
 }
@@ -69,6 +93,8 @@
 .bottom-container .bottom-wrapper .bottom-bar .bottom-content {
 	padding: .75rem;
 }
+
+/* ===== UTILITIES ===== */
 .mb-3 {
 	margin-bottom: 1rem;
 }
@@ -77,6 +103,18 @@
 }
 .d-block {
 	display: block;
+}
+.text-bold {
+	font-weight: bold;
+}
+.text-center {
+	text-align: center;
+}
+.text-caption {
+	font-size: 1.1rem;
+	text-align: center;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
 }
 .text-guess {
 	font-weight: bold;
@@ -96,22 +134,27 @@
 	word-break: break-all !important;
 	font-size: 1.3rem;
 }
-.text-bold {
-	font-weight: bold;
+
+/* ===== RESPONSIVE ===== */
+@media only screen and (min-width: 1024px) {
+	.main {
+		flex-direction: row; /* desktop = kiri–kanan */
+		align-items: flex-start;
+		justify-content: center;
+	}
+	.main .info {
+		order: 1; /* info di kiri */
+		max-width: 300px;
+		height: 100vh;
+		overflow-y: auto;
+	}
+	.main .container {
+		order: 2; /* printer di kanan */
+		max-width: 1000px;
+		height: 100vh;
+	}
 }
-.text-center {
-	text-align: center;
-}
-.text-caption {
-	font-size: 1.1rem;
-	text-align: center;
-	margin-top: 1rem;
-	margin-bottom: 1rem;
-}
-.printer .item {
-	font-size: 1.1rem;
-	padding: 1rem .5rem;
-}
+
 @media only screen and (min-width: 1400px) {
 	.text-caption {
 		font-size: 1.7rem;
@@ -126,6 +169,8 @@
 		padding: 1.5rem .75rem;
 	}
 }
+
+/* ===== ANIMATIONS ===== */
 .animation {
 	background: linear-gradient(-45deg, #d66745, #1885ad, #b8265e, #16b48f);
 	background-size: 400% 400%;
@@ -140,7 +185,6 @@
 .blink {
 	animation: blinker 1s infinite;
 }
-
 @keyframes blinker {
 	from { opacity: 1.0; }
 	50% { opacity: 0.25; }
