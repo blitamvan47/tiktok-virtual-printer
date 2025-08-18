@@ -4,32 +4,26 @@
 .main {
 	background-color: #ccc;
 	display: flex;
-	flex-direction: row; /* default desktop side by side */
-	min-height: 100vh;
+	height: 100vh;
 }
 .main .info {
-	position: relative; /* ubah dari absolute biar ikut flex */
-	flex: 0 0 250px; /* lebar sidebar */
-	background: #f9f9f9;
+	width: 300px;
 	padding: 1rem;
-	box-shadow: 2px 0 6px rgba(0,0,0,0.1);
-	overflow-y: auto;
+	background: #eee;
 }
 .main .container {
 	background-color: #fff;
 	flex: 1;
+	margin: auto;
+	width: 100%;
 	height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin: 0; /* hilangin margin auto */
 }
 .background {
-	position:fixed;
-	top:0;
-	bottom:0;
+	position: fixed;
+	top: 0;
+	bottom: 0;
 	object-fit: cover;
-	display:absolute;
+	display: absolute;
 	z-index: 1;
 }
 .printer {
@@ -166,19 +160,19 @@
 	}
 }
 
-/* ---------------- RESPONSIVE ---------------- */
-@media (max-width: 767px) {
+/* ======== Tambahan Responsif ======== */
+@media (max-width: 768px) {
 	.main {
-		flex-direction: column; /* stack ke atas-bawah */
+		flex-direction: column;
 	}
 	.main .info {
-		flex: none;
+		order: 2; /* pindah ke bawah */
 		width: 100%;
-		box-shadow: none;
-		border-bottom: 1px solid #ddd;
 	}
 	.main .container {
+		order: 1;
 		width: 100%;
 		height: auto;
+		flex: 1;
 	}
 }
