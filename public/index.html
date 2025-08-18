@@ -17,25 +17,19 @@
   <script type="text/javascript" src="assets/js/app.js"></script>
 </head>
 <body>
-  <!-- Tombol menu & overlay (baru ditambahin) -->
-  <button class="menu-btn" onclick="toggleMenu()">☰ Menu</button>
-  <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
-
   <div class="main">
-    <!-- Sidebar -->
-    <div class="info" id="sidebar">
-      <div class="mb-3">
-        <a href="/">MENU</a>
-      </div>
+    <!-- Sidebar kiri / atas -->
+    <div class="info">
+      <div class="mb-3"><a href="/">MENU</a></div>
       <table class="mb-3">
         <tr><td>Canvas</td><td>&nbsp;:&nbsp;</td><td id="gameSize">&infin;</td></tr>
         <tr><td>Chat Status</td><td>&nbsp;:&nbsp;</td><td id="stateText">Not Connected</td></tr>
         <tr><td>Game Timeout</td><td>&nbsp;:&nbsp;</td><td id="gameTimeout">&infin;</td></tr>
         <tr><td>Remain Words</td><td>&nbsp;:&nbsp;</td><td id="gameWords">&infin;</td></tr>
       </table>
-      <div class="mb-3">
-        <button id="btnPrepare">START GAME</button>
-      </div>
+
+      <div class="mb-3"><button id="btnPrepare">START GAME</button></div>
+
       <div class="text-bold">Printing Settings:</div>
       <table class="mt-2 mb-3">
         <tr><td><input id="confComment" type="checkbox" checked="true"/>&nbsp;&nbsp;</td><td>Comment</td></tr>
@@ -44,29 +38,23 @@
         <tr><td><input id="confJoin" type="checkbox"/>&nbsp;&nbsp;</td><td>User Joined</td></tr>
         <tr><td colspan="2"><button id="btnSave" class="mt-2">SAVE</button></td></tr>
       </table>
+
       <div class="text-bold">Live Chat</div>
       <div class="mb-3 mt-2">
         <input id="targetUsername" type="text" placeholder="Enter @username" style="width:140px;"/>
         <button id="targetConnect">Connect</button>
       </div>
+
       <div>
-        If you want the latest version and future update.
-        <br />
+        If you want the latest version and future update.<br/>
         You can check <a href="https://play.gemtok.live/"><b style="font-weight:bold;">https://play.gemtok.live/</b></a>
       </div>
+
       <div>
-        <audio id="sfx1" class="d-block">
-          <source src="assets/sounds/printer_comment.mp3" type="audio/mpeg">
-        </audio>
-        <audio id="sfx2" class="d-block">
-          <source src="assets/sounds/printer_gift.mp3" type="audio/mpeg">
-        </audio>
-        <audio id="sfx3" class="d-block">
-          <source src="assets/sounds/printer_winner.mp3" type="audio/mpeg">
-        </audio>
-        <audio id="sfx4" class="d-block">
-          <source src="assets/sounds/yey.mp3" type="audio/mpeg">
-        </audio>
+        <audio id="sfx1" class="d-block"><source src="assets/sounds/printer_comment.mp3" type="audio/mpeg"></audio>
+        <audio id="sfx2" class="d-block"><source src="assets/sounds/printer_gift.mp3" type="audio/mpeg"></audio>
+        <audio id="sfx3" class="d-block"><source src="assets/sounds/printer_winner.mp3" type="audio/mpeg"></audio>
+        <audio id="sfx4" class="d-block"><source src="assets/sounds/yey.mp3" type="audio/mpeg"></audio>
         <audio id="tts" class="d-block"></audio>
       </div>
     </div>
@@ -76,12 +64,11 @@
       <video class="background" autoplay muted loop>
         <source src="assets/media/background.mp4" type="video/mp4">
       </video>
+
       <div class="printer">
         <table class="table">
           <tr>
-            <td id="paperContainer">
-              <div id="paper" class="paper"></div>
-            </td>
+            <td id="paperContainer"><div id="paper" class="paper"></div></td>
           </tr>
           <tr class="bottom-container">
             <td class="bottom-wrapper">
@@ -89,7 +76,9 @@
                 <div class="bottom-content">
                   <div id="textGuess" class="text-guess blink">***</div>
                   <div class="text-caption">Saling Follow 👇</div>
-                  <div class="text-caption" style="margin-bottom: 0rem;"><a href="https://www.gemtok.live">Tangkap follower affiliate</a></div>
+                  <div class="text-caption" style="margin-bottom:0rem;">
+                    <a href="https://www.gemtok.live">Tangkap follower affiliate</a>
+                  </div>
                 </div>
               </div>
             </td>
@@ -98,14 +87,5 @@
       </div>
     </div>
   </div>
-
-  <!-- Script toggle sidebar -->
-  <script>
-    function toggleMenu() {
-      document.getElementById("sidebar").classList.toggle("active");
-      document.getElementById("overlay").style.display =
-        document.getElementById("sidebar").classList.contains("active") ? "block" : "none";
-    }
-  </script>
 </body>
 </html>
