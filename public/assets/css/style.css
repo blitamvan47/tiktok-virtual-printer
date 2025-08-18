@@ -1,50 +1,50 @@
 .debug * {
 	outline: 2px solid red;
 }
+
+/* AREA UTAMA */
 .main {
 	background-color: #ccc;
-	display: flex;
-	flex-direction: column; /* susun vertikal */
-	height: 100vh;
 }
 .main .info {
-	/* hapus absolute, jadikan footer scrollable */
-	position: relative;
+	position: relative;     /* ✅ bukan absolute lagi */
 	top: auto;
 	left: auto;
 	padding: 1rem;
-
-	background: #f0f0f0;
-	border-top: 2px solid #ccc;
-	max-height: 220px;     /* tinggi maksimal footer */
-	overflow-y: auto;      /* scroll kalau konten panjang */
+	margin-top: 2rem;      /* ✅ muncul di bawah printer */
 }
+
+/* CONTAINER */
 .main .container {
 	background-color: #fff;
 	width: 360px;
-	flex: 1; /* isi area atas */
+	min-height: 100vh;     /* ✅ biar fleksibel tinggi */
 	margin: auto;
 }
+
+/* BACKGROUND */
 .background {
-	position:fixed;
-	top:0;
-	bottom:0;
+	position: fixed;
+	top: 0;
+	bottom: 0;
 	object-fit: cover;
-	display:absolute;
+	display: absolute;
 	z-index: 1;
 }
+
+/* PRINTER */
 .printer {
 	background-image: url('../media/printer.png');
 	background-repeat: no-repeat;
-	background-attachment: fixed;
 	background-size: contain;
-	background-position-x: center;
-	background-position-y: center;
-	height: 100vh;
+	background-position: center top;
 	width: 100%;
-	z-index: 1000;
-	position: relative;
+	min-height: 100vh;     /* ✅ scroll bisa jalan */
+	position: relative;    /* ✅ ikut scroll */
+	z-index: 1;
 }
+
+/* KERTAS */
 .printer .table {
 	width: 100%;
 	height: 100%;
@@ -55,14 +55,17 @@
 	transform: perspective(500px) rotateX(12deg);
 	margin-top: -9%;
 	filter: grayscale(1);
-	overflow-y: hidden;
-	overflow-x: hidden;
+	overflow: visible;     /* ✅ biar isi kertas panjang */
 }
 .printer .item {
 	border-top: 2px dashed black;
 	overflow-wrap: break-word !important;
 	word-break: break-all !important;
+	font-size: 1.1rem;
+	padding: 1rem .5rem;
 }
+
+/* PANEL BAWAH */
 .bottom-container {
 	height: 32%;
 }
@@ -78,15 +81,12 @@
 .bottom-container .bottom-wrapper .bottom-bar .bottom-content {
 	padding: .75rem;
 }
-.mb-3 {
-	margin-bottom: 1rem;
-}
-.mt-2 {
-	margin-top: .5rem
-}
-.d-block {
-	display: block;
-}
+
+/* UTILITAS */
+.mb-3 { margin-bottom: 1rem; }
+.mt-2 { margin-top: .5rem; }
+.d-block { display: block; }
+
 .text-guess {
 	font-weight: bold;
 	padding: .5rem .75rem;
@@ -105,36 +105,30 @@
 	word-break: break-all !important;
 	font-size: 1.3rem;
 }
-.text-bold {
-	font-weight: bold;
-}
-.text-center {
-	text-align: center;
-}
+.text-bold { font-weight: bold; }
+.text-center { text-align: center; }
 .text-caption {
 	font-size: 1.1rem;
 	text-align: center;
 	margin-top: 1rem;
 	margin-bottom: 1rem;
 }
-.printer .item {
-	font-size: 1.1rem;
-	padding: 1rem .5rem;
-}
+
+/* RESPONSIVE */
 @media only screen and (min-width: 1400px) {
 	.text-caption {
 		font-size: 1.7rem;
 		margin-top: 2rem;
 		margin-bottom: 2rem;
 	}
-	.text-guess {
-		font-size: 2.3rem;
-	}
+	.text-guess { font-size: 2.3rem; }
 	.printer .item {
 		font-size: 1.4rem;
 		padding: 1.5rem .75rem;
 	}
 }
+
+/* ANIMASI */
 .animation {
 	background: linear-gradient(-45deg, #d66745, #1885ad, #b8265e, #16b48f);
 	background-size: 400% 400%;
@@ -146,9 +140,7 @@
 	bottom: 0;
 	opacity: .4;
 }
-.blink {
-	animation: blinker 1s infinite;
-}
+.blink { animation: blinker 1s infinite; }
 
 @keyframes blinker {
 	from { opacity: 1.0; }
@@ -156,13 +148,7 @@
 	to { opacity: 1.0; }
 }
 @keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+	0% { background-position: 0% 50%; }
+	50% { background-position: 100% 50%; }
+	100% { background-position: 0% 50%; }
 }
