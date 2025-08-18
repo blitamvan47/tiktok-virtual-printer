@@ -43,7 +43,7 @@
 	height: 100vh;
 	width: 100%;
 	z-index: 1000;
-	position: fixed;
+	position: relative;
 }
 .printer .table {
 	width: 100%;
