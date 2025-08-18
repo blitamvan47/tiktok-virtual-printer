@@ -1,76 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TikTok Virtual Printer</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Virtual Printer</title>
   <style>
     body {
       margin: 0;
       padding: 0;
-      background: #d3d3d3;
+      background: #ccc;
       display: flex;
       flex-direction: column;
       align-items: center;
-      overflow-y: auto; /* biar bisa scroll */
       min-height: 100vh;
+      overflow-y: auto; /* biar bisa scroll */
+      font-family: Arial, sans-serif;
     }
 
+    /* Wrapper printer */
     .printer-wrapper {
       display: flex;
       justify-content: center;
       margin-top: 20px;
     }
 
+    /* Printer */
     .printer {
-      background-image: url('media/printer.png');
+      background-image: url('media/printer.png'); /* ganti path sesuai file kamu */
       background-repeat: no-repeat;
       background-size: contain;
       background-position: center;
-      height: 500px;
-      width: 360px;
+      height: 500px;  /* tinggi printer */
+      width: 360px;   /* lebar printer */
       position: relative;
     }
 
-    canvas {
+    /* Kertas / canvas */
+    .printer canvas {
       position: absolute;
       top: 0;
       left: 50%;
       transform: translateX(-50%);
     }
 
+    /* Menu info */
     .info {
       width: 100%;
       max-width: 600px;
       background: #fff;
       padding: 20px;
-      margin-top: 20px;
+      margin: 40px auto;
       box-shadow: 0 2px 8px rgba(0,0,0,0.2);
       border-radius: 8px;
-      position: relative; /* ikut flow normal */
+      text-align: center;
+    }
+
+    .info h3 {
+      margin-top: 0;
+    }
+
+    button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #0056b3;
     }
   </style>
 </head>
 <body>
-  <!-- Printer dan Kertas -->
+
+  <!-- Bagian printer -->
   <div class="printer-wrapper">
     <div class="printer">
-      <canvas id="printerCanvas" width="360" height="695"></canvas>
+      <canvas id="printer-canvas" width="360" height="695"></canvas>
     </div>
   </div>
 
-  <!-- Panel Kontrol -->
+  <!-- Bagian menu/info -->
   <div class="info">
     <h3>MENU</h3>
     <p>Canvas: 360x695</p>
-    <p>Chat Status: <span id="chatStatus">Not Connected</span></p>
-    <button id="startGame">START GAME</button>
-    <p>Printing Settings:</p>
-    <label><input type="checkbox" checked id="printComment"> Comment</label><br>
-    <label><input type="checkbox" checked id="printLike"> Like</label>
+    <p>Chat Status: Not Connected</p>
+    <button>Test Print</button>
   </div>
 
-  <script src="script.js"></script>
 </body>
 </html>
