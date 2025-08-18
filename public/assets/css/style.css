@@ -3,17 +3,26 @@
 }
 .main {
 	background-color: #ccc;
+	display: flex;
+	flex-direction: column; /* susun vertikal */
+	height: 100vh;
 }
 .main .info {
-	position: absolute;
-	top: 0;
-	left: 0;
+	/* hapus absolute, jadikan footer scrollable */
+	position: relative;
+	top: auto;
+	left: auto;
 	padding: 1rem;
+
+	background: #f0f0f0;
+	border-top: 2px solid #ccc;
+	max-height: 220px;     /* tinggi maksimal footer */
+	overflow-y: auto;      /* scroll kalau konten panjang */
 }
 .main .container {
 	background-color: #fff;
 	width: 360px;
-	height: 100vh;
+	flex: 1; /* isi area atas */
 	margin: auto;
 }
 .background {
