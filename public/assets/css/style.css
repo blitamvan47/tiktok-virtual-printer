@@ -3,6 +3,7 @@
 }
 .main {
 	background-color: #ccc;
+	display: flex; /* biar menu & printer bisa sejajar di desktop */
 }
 .main .info {
 	position: absolute;
@@ -15,6 +16,7 @@
 	width: 360px;
 	height: 100vh;
 	margin: auto;
+	flex: 1;
 }
 .background {
 	position:fixed;
@@ -155,5 +157,29 @@
 	}
 	100% {
 		background-position: 0% 50%;
+	}
+}
+
+/* === Tambahan untuk mode HP === */
+@media (max-width: 768px) {
+	.main {
+		display: flex;
+		flex-direction: column-reverse; /* menu ke bawah */
+	}
+
+	.menu {
+		width: 100%; /* menu full width */
+	}
+
+	.main .container {
+		width: 100%;   /* printer full width */
+		max-width: none;
+		height: auto;
+	}
+
+	.printer .paper {
+		width: 100%;   /* kertas full width juga */
+		max-width: none;
+		margin-top: -5%;
 	}
 }
