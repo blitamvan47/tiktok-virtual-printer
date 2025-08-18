@@ -3,7 +3,7 @@
 }
 .main {
 	background-color: #ccc;
-	display: flex; /* biar menu & printer bisa sejajar di desktop */
+	display: flex; /* default desktop: menu kiri, printer kanan */
 }
 .main .info {
 	position: absolute;
@@ -160,15 +160,31 @@
 	}
 }
 
-/* === Tambahan untuk mode HP === */
+/* === Tambahan Layout Responsif === */
+
+/* Desktop */
+.menu {
+	width: 250px;     /* menu kiri fix */
+	flex-shrink: 0;
+}
+.main .container {
+	flex: 1;          /* printer ambil sisa space */
+}
+
+/* Mobile (HP) */
 @media (max-width: 768px) {
 	.main {
 		display: flex;
-		flex-direction: column-reverse; /* menu ke bawah */
+		flex-direction: column-reverse; /* menu pindah ke bawah */
 	}
 
 	.menu {
-		width: 100%; /* menu full width */
+		width: 100%;   /* menu full width */
+		position: relative; /* jangan absolute di HP */
+		top: auto;
+		left: auto;
+		padding: 1rem;
+		background: #f7f7f7; /* biar keliatan */
 	}
 
 	.main .container {
@@ -178,7 +194,7 @@
 	}
 
 	.printer .paper {
-		width: 100%;   /* kertas full width juga */
+		width: 100%;   /* kertas ikut full width */
 		max-width: none;
 		margin-top: -5%;
 	}
