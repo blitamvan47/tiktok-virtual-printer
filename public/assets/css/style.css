@@ -1,154 +1,120 @@
+/* Debugging helper */
 .debug * {
-	outline: 2px solid red;
+  outline: 2px solid red;
 }
 
-/* AREA UTAMA */
-.main {
-	background-color: #ccc;
-}
-.main .info {
-	position: relative;     /* ✅ bukan absolute lagi */
-	top: auto;
-	left: auto;
-	padding: 1rem;
-	margin-top: 2rem;      /* ✅ muncul di bawah printer */
-}
-
-/* CONTAINER */
-.main .container {
-	background-color: #fff;
-	width: 360px;
-	min-height: 100vh;     /* ✅ biar fleksibel tinggi */
-	margin: auto;
+/* Body & Layout */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #ccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  overflow-y: auto; /* biar bisa scroll */
+  font-family: Arial, sans-serif;
 }
 
-/* BACKGROUND */
-.background {
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	object-fit: cover;
-	display: absolute;
-	z-index: 1;
+/* Printer Section */
+.printer-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
 }
 
-/* PRINTER */
 .printer {
-	background-image: url('../media/printer.png');
-	background-repeat: no-repeat;
-	background-size: contain;
-	background-position: center top;
-	width: 100%;
-	min-height: 100vh;     /* ✅ scroll bisa jalan */
-	position: relative;    /* ✅ ikut scroll */
-	z-index: 1;
+  background-image: url('media/printer.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  height: 500px;
+  width: 360px;
+  position: relative;
+  z-index: 10;
 }
 
-/* KERTAS */
-.printer .table {
-	width: 100%;
-	height: 100%;
-}
-.printer .paper {
-	width: 60%;
-	margin: auto;
-	transform: perspective(500px) rotateX(12deg);
-	margin-top: -9%;
-	filter: grayscale(1);
-	overflow: visible;     /* ✅ biar isi kertas panjang */
-}
-.printer .item {
-	border-top: 2px dashed black;
-	overflow-wrap: break-word !important;
-	word-break: break-all !important;
-	font-size: 1.1rem;
-	padding: 1rem .5rem;
+.printer canvas {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-/* PANEL BAWAH */
-.bottom-container {
-	height: 32%;
-}
-.bottom-container .bottom-wrapper {
-	padding: 2rem;
-}
-.bottom-container .bottom-wrapper .bottom-bar {
-	background: #fff;
-	border-radius: 0.5rem;
-	width: 100%;
-	height: 100%;
-}
-.bottom-container .bottom-wrapper .bottom-bar .bottom-content {
-	padding: .75rem;
+/* Panel Info */
+.info {
+  width: 100%;
+  max-width: 600px;
+  background: #fff;
+  padding: 20px;
+  margin: 30px auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  text-align: center;
 }
 
-/* UTILITAS */
-.mb-3 { margin-bottom: 1rem; }
-.mt-2 { margin-top: .5rem; }
-.d-block { display: block; }
-
-.text-guess {
-	font-weight: bold;
-	padding: .5rem .75rem;
-	text-align: center;
-	font-size: 1.7rem;
-	color: #e53935;
-	border-radius: 5px;
-	border: 2px solid #e53935;
-	text-transform: uppercase;
-}
-.text-winner {
-	font-weight: bold;
-	color: #512da8;
-	margin-top: .25rem;
-	overflow-wrap: break-word !important;
-	word-break: break-all !important;
-	font-size: 1.3rem;
-}
-.text-bold { font-weight: bold; }
-.text-center { text-align: center; }
-.text-caption {
-	font-size: 1.1rem;
-	text-align: center;
-	margin-top: 1rem;
-	margin-bottom: 1rem;
+/* Typography */
+h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.3rem;
 }
 
-/* RESPONSIVE */
-@media only screen and (min-width: 1400px) {
-	.text-caption {
-		font-size: 1.7rem;
-		margin-top: 2rem;
-		margin-bottom: 2rem;
-	}
-	.text-guess { font-size: 2.3rem; }
-	.printer .item {
-		font-size: 1.4rem;
-		padding: 1.5rem .75rem;
-	}
+p {
+  margin: 5px 0;
+  font-size: 1rem;
 }
 
-/* ANIMASI */
+label {
+  display: block;
+  margin-top: 8px;
+  font-size: 0.95rem;
+}
+
+/* Buttons */
+button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #1885ad;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #145f7c;
+}
+
+/* Animation background (optional) */
 .animation {
-	background: linear-gradient(-45deg, #d66745, #1885ad, #b8265e, #16b48f);
-	background-size: 400% 400%;
-	animation: gradient 10s ease infinite;
-	height: 100vh;
-	z-index: 2000;
-	position: fixed;
-	top: 0;
-	bottom: 0;
-	opacity: .4;
+  background: linear-gradient(-45deg, #d66745, #1885ad, #b8265e, #16b48f);
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+  height: 100vh;
+  z-index: 1;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.2;
 }
-.blink { animation: blinker 1s infinite; }
+
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Blink animation (kalau mau dipakai buat teks) */
+.blink {
+  animation: blinker 1s infinite;
+}
 
 @keyframes blinker {
-	from { opacity: 1.0; }
-	50% { opacity: 0.25; }
-	to { opacity: 1.0; }
-}
-@keyframes gradient {
-	0% { background-position: 0% 50%; }
-	50% { background-position: 100% 50%; }
-	100% { background-position: 0% 50%; }
+  from { opacity: 1.0; }
+  50% { opacity: 0.25; }
+  to { opacity: 1.0; }
 }
